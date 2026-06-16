@@ -83,7 +83,7 @@
   .btn.ghost{background:transparent;color:var(--gold)}
   .btn.ghost:hover{background:var(--gold);color:#fff}
   .burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;text-shadow:0 1px 10px rgba(0,0,0,.4)}
-  .nav-overlay{position:fixed;inset:0;z-index:65;background:rgba(8,9,16,.55);
+  .nav-overlay{position:fixed;inset:0;z-index:55;background:rgba(4,5,10,.62);
     opacity:0;visibility:hidden;transition:.3s}
   .nav-overlay.open{opacity:1;visibility:visible}
   header.nav.scrolled .burger{color:var(--cream);text-shadow:none}
@@ -291,15 +291,17 @@
     .nav-links{
       position:fixed;top:0;right:0;bottom:0;left:auto;width:min(78vw,300px);
       flex-direction:column;align-items:flex-start;gap:0;z-index:70;
-      background:#12162a;
-      border-left:1px solid var(--line);padding:96px 0 24px;
+      background:#283156;
+      border-left:3px solid var(--gold);padding:96px 0 24px;
       transform:translateX(100%);transition:transform .35s ease;overflow-y:auto;
-      box-shadow:-12px 0 40px rgba(0,0,0,.45)
+      box-shadow:-16px 0 50px rgba(0,0,0,.6)
     }
     .nav-links.open{transform:translateX(0)}
-    .nav-links a{padding:16px 28px;width:100%;text-shadow:none;color:var(--cream)}
-    header.nav.scrolled .nav-links a{color:var(--cream)}
+    .nav-links a{padding:16px 28px;width:100%;text-shadow:none;color:#f3eee2;
+      border-bottom:1px solid rgba(255,255,255,.07)}
+    header.nav.scrolled .nav-links a{color:#f3eee2}
     .burger{display:block;position:relative;z-index:80}
+    header.nav.scrolled{background:#101424;backdrop-filter:none;-webkit-backdrop-filter:none}
     .nav-cta-desktop{display:none}
     .about-grid,.info-grid{grid-template-columns:1fr;gap:34px}
     .order-cards{grid-template-columns:1fr}
