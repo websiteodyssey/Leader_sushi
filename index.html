@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leader Sushi — Sushi · Ramen · Poké · Paris</title>
+<meta name="description" content="Leader Sushi — Cuisine japonaise & asiatique au cœur de Paris. Sushi, ramen, poké, makis. Livraison Uber Eats & Click&Collect. 78 Rue Rambuteau, 75001 Paris." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#14182a;        /* indigo nuit (紺) */
+    --bg-2:#1b2138;
+    --panel:#1f2645;
+    --gold:#d8a838;
+    --gold-soft:#ecc874;
+    --cream:#f3eee2;     /* texte clair (washi) */
+    --muted:#a8a4ba;
+    --line:rgba(216,168,56,.22);
+    --red:#e0584b;       /* vermillon (朱) */
+    --red-soft:#ea6f63;
+    --radius:16px;
+    --maxw:1180px;
+    --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23ecc874' stroke-opacity='0.05' stroke-width='1.3'%3E%3Cpath d='M0 40c0-22 18-40 40-40s40 18 40 40'/%3E%3Cpath d='M12 40c0-15 12.5-28 28-28s28 13 28 28'/%3E%3Cpath d='M24 40c0-8.8 7.2-16 16-16s16 7.2 16 16'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',system-ui,sans-serif;
+    background-color:var(--bg);
+    background-image:var(--wave);
+    color:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Shippori Mincho',serif;font-weight:600;line-height:1.15}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .gold{color:var(--gold)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    transition:.35s ease;
+    background:transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(18,22,40,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 6px 24px rgba(0,0,0,.3);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Shippori Mincho',serif;font-size:1.45rem;font-weight:700;letter-spacing:.5px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+  header.nav.scrolled .brand{color:var(--cream);text-shadow:none}
+  .brand .dot{color:var(--gold-soft)}
+  header.nav.scrolled .brand .dot{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;color:#fff;opacity:.92;transition:.2s;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+  header.nav.scrolled .nav-links a{color:var(--cream);opacity:.85;text-shadow:none}
+  .nav-links a:hover{opacity:1;color:var(--gold-soft)}
+  header.nav.scrolled .nav-links a:hover{color:var(--gold)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .lang{
+    display:flex;border:1px solid rgba(255,255,255,.45);border-radius:30px;overflow:hidden;font-size:.78rem
+  }
+  header.nav.scrolled .lang{border-color:var(--line)}
+  .lang button{
+    background:transparent;border:0;color:rgba(255,255,255,.85);padding:7px 13px;cursor:pointer;
+    font-family:inherit;letter-spacing:.05em;transition:.2s
+  }
+  header.nav.scrolled .lang button{color:var(--muted)}
+  .lang button.active{background:var(--gold);color:#fff;font-weight:600}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:#fff;font-weight:600;
+    padding:11px 22px;border-radius:30px;font-size:.85rem;
+    border:1px solid var(--gold);cursor:pointer;transition:.25s;white-space:nowrap
+  }
+  .btn:hover{background:#946812;border-color:#946812;color:#fff;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--gold)}
+  .btn.ghost:hover{background:var(--gold);color:#fff}
+  .burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+  header.nav.scrolled .burger{color:var(--cream);text-shadow:none}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    background:#000;overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:-30px;
+    background:url('image/accueil.png') center/cover no-repeat;
+    filter:blur(6px) brightness(.72) saturate(1.12);
+    transform:scale(1.1);
+    z-index:0;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(10,9,11,.28) 0%,rgba(10,9,11,.42) 50%,rgba(10,9,11,.85) 100%),
+               radial-gradient(120% 90% at 50% 35%,rgba(10,9,11,.02),rgba(10,9,11,.55));
+  }
+  .hero-content{position:relative;z-index:2;max-width:760px;margin:0 auto;padding-top:60px;
+    text-align:center;color:#fbf7ef;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+  .hero-jp{font-family:'Noto Sans JP',sans-serif;color:var(--gold-soft);
+    letter-spacing:.5em;font-size:.95rem;margin-bottom:14px;padding-left:.5em;font-weight:500}
+  .hero-rule{width:60px;height:3px;margin:22px auto 26px;
+    background:linear-gradient(90deg,transparent,var(--red),transparent)}
+  .hero-rule::before{content:"";display:block;width:11px;height:11px;border-radius:50%;
+    background:var(--red);margin:-4px auto 0;box-shadow:0 0 0 4px rgba(193,53,43,.25)}
+  .eyebrow{
+    display:inline-block;letter-spacing:.32em;text-transform:uppercase;font-size:.74rem;
+    color:var(--gold-soft);margin-bottom:22px;border:1px solid var(--line);
+    padding:7px 16px;border-radius:30px;background:rgba(0,0,0,.25)
+  }
+  .hero-brand{font-size:clamp(3rem,8vw,5.6rem);margin-bottom:0;letter-spacing:.04em;font-weight:700;color:#fff}
+  .hero-brand em{font-style:normal;color:var(--gold-soft)}
+  .hero p.lead{font-size:clamp(1rem,2.2vw,1.25rem);color:#efe8dc;max-width:560px;margin:0 auto 34px;
+    font-weight:300;font-style:italic;letter-spacing:.02em}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .hero-meta{display:flex;gap:26px;margin-top:42px;flex-wrap:wrap;color:#cfc7bd;font-size:.9rem}
+  .hero-meta span{display:flex;align-items:center;gap:8px}
+  .hero-meta b{color:var(--gold)}
+
+  /* ---------- JAPANESE MOTIFS ---------- */
+  .ichimatsu{height:16px;width:100%;
+    background:repeating-conic-gradient(var(--red) 0% 25%, transparent 0% 50%) 0 0 / 32px 32px;
+    opacity:.85}
+  .ichimatsu.gold{background:repeating-conic-gradient(var(--gold) 0% 25%, transparent 0% 50%) 0 0 / 28px 28px;opacity:.5}
+
+  /* ---------- TICKER ---------- */
+  .ticker{background:var(--red);overflow:hidden;white-space:nowrap;
+    border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+  .ticker-track{display:inline-flex;align-items:center;animation:tickerMove 42s linear infinite}
+  .ticker-track span{color:#fff;font-family:'Shippori Mincho',serif;font-size:.92rem;
+    letter-spacing:.22em;text-transform:uppercase;padding:13px 0;font-weight:500}
+  .ticker-track .jp{font-family:'Noto Sans JP',sans-serif;letter-spacing:.14em;color:#ffe9c9;text-transform:none}
+  .ticker-track .sep{color:rgba(255,255,255,.5);margin:0 22px;font-size:.7rem}
+  @keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:96px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
+  .sec-head .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;color:var(--red);display:block;margin-bottom:14px;font-weight:500}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,2.9rem);margin-bottom:16px}
+  .sec-head p{color:var(--muted);font-weight:300}
+
+  /* ABOUT */
+  .about{background:var(--bg-2) var(--wave)}
+  .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+  .about-img{position:relative;border-radius:var(--radius);overflow:hidden;min-height:420px;
+    background:url('image/accueil.png') center/cover;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+  .about-img::after{content:"";position:absolute;inset:0;border:1px solid var(--line);border-radius:var(--radius)}
+  .about-text h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:8px}
+  .about-text .sub{color:var(--red);letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;margin-bottom:22px;font-weight:500}
+  .about-text p{color:var(--muted);font-weight:300;margin-bottom:18px}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .tag{border:1px solid var(--line);color:var(--gold-soft);padding:7px 15px;border-radius:30px;font-size:.78rem}
+
+  /* HOW / ORDER */
+  .order{background:var(--bg) var(--wave)}
+  .order-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .ocard{
+    background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:38px 30px;text-align:center;transition:.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,.05)
+  }
+  .ocard:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.09)}
+  .ocard .ic{font-size:2.2rem;margin-bottom:16px}
+  .ocard h3{font-size:1.25rem;margin-bottom:10px}
+  .ocard p{color:var(--muted);font-size:.9rem;font-weight:300;margin-bottom:22px;min-height:48px}
+
+  /* CUISINE FILMSTRIP */
+  .cuisine{background:linear-gradient(180deg,#0f1320,#0b0e18);padding:0;overflow:hidden}
+  .cuisine-head{max-width:var(--maxw);margin:0 auto;padding:56px 22px 26px}
+  .cuisine-head .ck{display:inline-flex;align-items:center;gap:11px;color:#ece0c8;
+    letter-spacing:.34em;text-transform:uppercase;font-size:.82rem;font-weight:500}
+  .cuisine-head .ck::before{content:"\25B8";color:var(--gold-soft);font-size:1rem}
+  .filmstrip{overflow-x:auto;overflow-y:hidden;cursor:grab;
+    -ms-overflow-style:none;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .filmstrip::-webkit-scrollbar{display:none}
+  .filmstrip.dragging{cursor:grabbing}
+  .film-track{display:flex;gap:6px;width:max-content}
+  .film-item{position:relative;flex:0 0 auto;
+    width:clamp(220px,24vw,330px);height:clamp(250px,30vw,360px);overflow:hidden;background:#15100a}
+  .film-item img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .film-item::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,14,8,.05) 50%,rgba(15,10,5,.82))}
+  .film-cap{position:absolute;left:24px;bottom:22px;z-index:2;color:rgba(255,255,255,.85);
+    letter-spacing:.18em;text-transform:uppercase;font-size:.84rem;font-weight:500}
+  .film-cap small{color:rgba(255,255,255,.5);letter-spacing:.08em;margin-left:7px;font-weight:300}
+  .cuisine-foot{max-width:var(--maxw);margin:0 auto;padding:28px 22px 56px}
+  .cuisine-foot span{color:#bcac8a;letter-spacing:.28em;text-transform:uppercase;font-size:.76rem}
+  .cuisine-foot span::before{content:"\2192  ";color:var(--gold-soft)}
+
+  /* MENU */
+  .menu{background:var(--wave), linear-gradient(180deg,#1d1512,#16100e)}
+  .menu-tabs{display:flex;flex-wrap:nowrap;gap:10px;margin-bottom:46px;
+    overflow-x:auto;overflow-y:hidden;cursor:grab;padding:2px 2px 8px;
+    -ms-overflow-style:none;scrollbar-width:none;scroll-behavior:smooth}
+  .menu-tabs::-webkit-scrollbar{display:none}
+  .menu-tabs.dragging{cursor:grabbing;scroll-behavior:auto}
+  .menu-tabs button{
+    flex:0 0 auto;white-space:nowrap;
+    background:transparent;border:1px solid var(--line);color:var(--cream);
+    padding:9px 18px;border-radius:30px;font-family:inherit;font-size:.82rem;cursor:pointer;
+    transition:.2s;letter-spacing:.02em;user-select:none
+  }
+  .menu-tabs button:hover{border-color:var(--gold);color:var(--gold)}
+  .menu-tabs button.active{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:600}
+  .menu-cat{margin-bottom:40px;position:relative;
+    background:var(--wave), linear-gradient(160deg,#2a201c,#1a1310);
+    border:1px solid rgba(216,168,56,.45);border-radius:var(--radius);
+    padding:36px 38px 42px;box-shadow:0 20px 55px rgba(0,0,0,.4)}
+  .menu-cat::before{content:"";position:absolute;inset:8px;border:1px solid rgba(216,168,56,.3);
+    border-radius:10px;pointer-events:none}
+  .menu-cat::after{content:"寿";position:absolute;top:30px;right:34px;z-index:2;
+    width:46px;height:46px;border-radius:8px;background:var(--red);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;
+    font-size:1.3rem;box-shadow:0 5px 16px rgba(0,0,0,.35);transform:rotate(-4deg)}
+  .cat-head{display:flex;align-items:center;gap:18px;margin-bottom:18px;position:relative;z-index:1;
+    padding-bottom:18px;border-bottom:2px solid var(--line)}
+  .cat-thumb{width:78px;height:78px;border-radius:12px;object-fit:cover;
+    border:2px solid var(--gold);box-shadow:0 8px 22px rgba(0,0,0,.3);flex:0 0 auto}
+  .menu-cat h3{font-size:1.7rem;display:flex;align-items:center;gap:12px}
+  .menu-cat h3 .ic{font-size:1.5rem}
+  .menu-sub{margin-top:32px;position:relative;z-index:1}
+  .menu-sub h4{font-family:'Shippori Mincho',serif;font-size:1.2rem;color:var(--gold);
+    margin-bottom:18px;letter-spacing:.01em;display:flex;align-items:center;gap:11px}
+  .menu-sub h4::before{content:"";width:9px;height:9px;background:var(--red);
+    transform:rotate(45deg);flex:0 0 auto}
+  @media(max-width:560px){
+    .menu-cat{padding:28px 22px 32px}
+    .menu-cat::after{width:38px;height:38px;font-size:1.05rem;top:22px;right:22px}
+  }
+  .items{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px}
+  .item{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding-bottom:14px;border-bottom:1px dashed rgba(255,255,255,.13)
+  }
+  .item .nm{font-weight:500}
+  .item .nm small{display:block;color:var(--muted);font-size:.78rem;font-weight:300;margin-top:2px}
+  .item .price{color:var(--gold);font-weight:600;white-space:nowrap;font-family:'Shippori Mincho',serif}
+  .menu-note{text-align:center;color:var(--muted);font-size:.84rem;margin-top:10px;font-weight:300}
+
+  /* INFO / HOURS */
+  .info{background:var(--bg) var(--wave)}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .info-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:36px}
+  .info-card h3{font-size:1.5rem;margin-bottom:22px}
+  .hours-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:.92rem}
+  .hours-row span:last-child{color:var(--gold-soft)}
+  .hours-row.today{color:var(--gold);font-weight:600}
+  .contact-line{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+  .contact-line .ic{color:var(--gold);font-size:1.15rem;margin-top:2px}
+  .contact-line b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500}
+  .map-embed{margin-top:6px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .map-embed iframe{width:100%;height:200px;border:0;filter:grayscale(.3) contrast(1.05)}
+  .socials{display:flex;gap:12px;margin-top:8px}
+  .socials a{
+    width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:50%;color:var(--gold);transition:.25s
+  }
+  .socials a:hover{background:var(--gold);color:#1a130a}
+
+  /* CTA strip */
+  .cta-strip{background:linear-gradient(120deg,#1c2440,#241b32);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .cta-strip h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+  .cta-strip p{color:#cfc7d6;margin-bottom:28px;font-weight:300}
+  .cta-strip .hero-cta{justify-content:center}
+
+  /* FOOTER */
+  footer{background:#0e1220;color:#e9e2d6;padding:54px 0 30px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:34px}
+  .foot-brand{max-width:300px}
+  .foot-brand .brand{margin-bottom:14px}
+  .foot-brand p{color:var(--muted);font-size:.88rem;font-weight:300}
+  .foot-col h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:16px}
+  .foot-col a,.foot-col p{display:block;color:#bdb5ac;font-size:.88rem;margin-bottom:9px;font-weight:300;transition:.2s}
+  .foot-col a:hover{color:var(--gold)}
+  .copy{text-align:center;color:#6f6961;font-size:.8rem;border-top:1px solid rgba(255,255,255,.06);padding-top:24px;font-weight:300}
+
+  /* RESPONSIVE */
+  @media(max-width:880px){
+    .nav-links{
+      position:fixed;top:74px;right:0;left:0;flex-direction:column;gap:0;
+      background:rgba(12,11,13,.98);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);padding:0;max-height:0;overflow:hidden;transition:.35s
+    }
+    .nav-links.open{max-height:420px;padding:14px 0}
+    .nav-links a{padding:14px 22px;width:100%}
+    .burger{display:block}
+    .nav-cta-desktop{display:none}
+    .about-grid,.info-grid{grid-template-columns:1fr;gap:34px}
+    .order-cards{grid-template-columns:1fr}
+    .items{grid-template-columns:1fr;gap:14px}
+    .about-img{min-height:300px}
+  }
+  @media(max-width:520px){
+    section{padding:68px 0}
+    .hero-meta{gap:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand">Leader<span class="dot">·</span>Sushi</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="nav_about">La Maison</a>
+      <a href="#order" data-i18n="nav_order">Commander</a>
+      <a href="#gallery" data-i18n="nav_gallery">Galerie</a>
+      <a href="#menu" data-i18n="nav_menu">Carte</a>
+      <a href="#info" data-i18n="nav_info">Infos</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#order" class="btn nav-cta-desktop" data-i18n="nav_cta">Commander</a>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-content">
+    <div class="hero-jp">リーダー寿司</div>
+    <h1 class="hero-brand" data-i18n="hero_title">Leader <em>Sushi</em></h1>
+    <div class="hero-rule"></div>
+    <p class="lead" data-i18n="hero_lead">L'art du sushi, au cœur de Paris.</p>
+    <div class="hero-cta">
+      <a href="https://www.ubereats.com/fr-en/store/ramen-leader-sushi/YszfQQxFR1eEVk09w4kuDw/d328e2f1-98bc-4d00-b503-4050e3e25717" target="_blank" rel="noopener" class="btn" data-i18n="hero_uber">🛵 Livraison Uber Eats</a>
+      <a href="https://order.we-eats.com/leadersushi" target="_blank" rel="noopener" class="btn ghost" data-i18n="hero_cc">🥡 Click &amp; Collect</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- ================= CUISINE FILMSTRIP ================= -->
+<section class="cuisine" id="gallery">
+  <div class="cuisine-head"><span class="ck" data-i18n="cuis_kicker">En cuisine — Nos plats</span></div>
+  <div class="filmstrip" id="filmstrip">
+    <div class="film-track" id="filmTrack"></div>
+  </div>
+  <div class="cuisine-foot"><span data-i18n="cuis_hint">Glissez pour découvrir</span></div>
+</section>
+
+<!-- ================= ORDER ================= -->
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="order_kicker">Commander</span>
+      <h2 data-i18n="order_title">Chez vous ou à emporter</h2>
+      <p data-i18n="order_sub">Savourez Leader Sushi où que vous soyez — livré à domicile, à emporter, ou sur place.</p>
+    </div>
+    <div class="order-cards">
+      <div class="ocard">
+        <div class="ic">🛵</div>
+        <h3 data-i18n="oc1_t">Livraison Uber Eats</h3>
+        <p data-i18n="oc1_p">Faites-vous livrer toute la carte directement chez vous en quelques minutes.</p>
+        <a href="https://www.ubereats.com/fr-en/store/ramen-leader-sushi/YszfQQxFR1eEVk09w4kuDw/d328e2f1-98bc-4d00-b503-4050e3e25717" target="_blank" rel="noopener" class="btn" data-i18n="oc1_b">Commander</a>
+      </div>
+      <div class="ocard">
+        <div class="ic">🥡</div>
+        <h3 data-i18n="oc2_t">Click &amp; Collect</h3>
+        <p data-i18n="oc2_p">Commandez en ligne et récupérez votre repas au restaurant, sans attente.</p>
+        <a href="https://order.we-eats.com/leadersushi" target="_blank" rel="noopener" class="btn" data-i18n="oc2_b">Commander &amp; retirer</a>
+      </div>
+      <div class="ocard">
+        <div class="ic">🍶</div>
+        <h3 data-i18n="oc3_t">Sur place</h3>
+        <p data-i18n="oc3_p">Réservez votre table ou venez profiter de notre salle, anniversaires bienvenus.</p>
+        <a href="tel:+33145081632" class="btn" data-i18n="oc3_b">📅 Réserver</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="menu_kicker">Notre Carte</span>
+      <h2 data-i18n="menu_title">La Carte</h2>
+      <p data-i18n="menu_sub">Une sélection de nos spécialités. Retrouvez la carte complète sur Uber Eats.</p>
+    </div>
+    <div class="menu-tabs" id="menuTabs"></div>
+    <div id="menuBody"></div>
+    <p class="menu-note" data-i18n="menu_disclaimer">Les prix peuvent varier selon le canal de commande. Carte complète et disponibilités sur Uber Eats.</p>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img" role="img" aria-label="Leader Sushi"></div>
+    <div class="about-text">
+      <p class="sub" data-i18n="about_sub">Un pas vers l'ailleurs</p>
+      <h2 data-i18n="about_title">La Maison Leader Sushi</h2>
+      <p data-i18n="about_p1">Chez Leader Sushi, chaque plat est une invitation au voyage. Nos recettes savoureuses sont élaborées dans la pure tradition, avec des produits frais et soigneusement sélectionnés, pour vous faire explorer toute la richesse de la gastronomie asiatique.</p>
+      <p data-i18n="about_p2">Notre salle chaleureuse accueille aussi bien les groupes, les collègues et les familles que les curieux découvrant la cuisine japonaise. Service continu, anniversaires, salle privatisable : tout est pensé pour un moment convivial.</p>
+      <div class="tags">
+        <span class="tag" data-i18n="tag1">🍣 Fait maison</span>
+        <span class="tag" data-i18n="tag2">🌱 Options vegan</span>
+        <span class="tag" data-i18n="tag3">🌶️ Plats épicés</span>
+        <span class="tag" data-i18n="tag4">🎉 Salle privatisable</span>
+        <span class="tag" data-i18n="tag5">🕛 Service continu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA STRIP ================= -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h2 data-i18n="cta_title">Une petite faim ?</h2>
+    <p data-i18n="cta_sub">Commandez maintenant et savourez la cuisine Leader Sushi.</p>
+    <div class="hero-cta">
+      <a href="https://www.ubereats.com/fr-en/store/ramen-leader-sushi/YszfQQxFR1eEVk09w4kuDw/d328e2f1-98bc-4d00-b503-4050e3e25717" target="_blank" rel="noopener" class="btn" data-i18n="cta_uber">🛵 Uber Eats</a>
+      <a href="https://order.we-eats.com/leadersushi" target="_blank" rel="noopener" class="btn ghost" data-i18n="cta_cc">🥡 Click &amp; Collect</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INFO ================= -->
+<section class="info" id="info">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="info_kicker">Nous trouver</span>
+      <h2 data-i18n="info_title">Horaires &amp; Contact</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3 data-i18n="hours_title">🕛 Horaires d'ouverture</h3>
+        <div id="hoursList"></div>
+      </div>
+      <div class="info-card">
+        <h3 data-i18n="contact_title">📍 Coordonnées</h3>
+        <div class="contact-line">
+          <span class="ic">📍</span>
+          <div><b data-i18n="lbl_addr">Adresse</b>78 Rue Rambuteau, 75001 Paris</div>
+        </div>
+        <div class="contact-line">
+          <span class="ic">📞</span>
+          <div><b data-i18n="lbl_phone">Téléphone</b><a href="tel:+33145081632">01 45 08 16 32</a></div>
+        </div>
+        <div class="contact-line">
+          <span class="ic">💬</span>
+          <div><b data-i18n="lbl_social">Réseaux</b>
+            <div class="socials">
+              <a href="https://instagram.com/leadersushi" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+              <a href="https://facebook.com/yang.leadersushi" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe loading="lazy" title="Leader Sushi map"
+            src="https://www.google.com/maps?q=78+Rue+Rambuteau,+75001+Paris&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ichimatsu"></div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#home" class="brand">Leader<span class="dot">·</span>Sushi</a>
+        <p data-i18n="foot_about">Cuisine japonaise &amp; asiatique faite maison au cœur de Paris. Sushi, ramen, poké &amp; makis.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_nav">Navigation</h4>
+        <a href="#about" data-i18n="nav_about">La Maison</a>
+        <a href="#order" data-i18n="nav_order">Commander</a>
+        <a href="#menu" data-i18n="nav_menu">Carte</a>
+        <a href="#info" data-i18n="nav_info">Infos</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_order">Commander</h4>
+        <a href="https://www.ubereats.com/fr-en/store/ramen-leader-sushi/YszfQQxFR1eEVk09w4kuDw/d328e2f1-98bc-4d00-b503-4050e3e25717" target="_blank" rel="noopener">Uber Eats</a>
+        <a href="https://order.we-eats.com/leadersushi" target="_blank" rel="noopener">Click &amp; Collect</a>
+        <a href="tel:+33145081632" data-i18n="foot_call">Réserver · 01 45 08 16 32</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_contact">Contact</h4>
+        <p>78 Rue Rambuteau<br/>75001 Paris</p>
+        <p data-i18n="foot_hours">Tous les jours · 12h–23h</p>
+        <a href="https://instagram.com/leadersushi" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com/yang.leadersushi" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="copy">© <span id="year"></span> Leader Sushi · 78 Rue Rambuteau, 75001 Paris · <span data-i18n="foot_rights">Tous droits réservés.</span></div>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA: TICKER (FR · 日本語) ============ */
+const TICKER = [
+  ["Sushi","寿司"],["Ramen","ラーメン"],["Sashimi","刺身"],["Gyoza","餃子"],
+  ["Maki","巻物"],["Poké","ポケ丼"],["Tempura","天ぷら"],["Yakitori","焼き鳥"],
+  ["Nems","春巻"],["Chirashi","ちらし"],["Bubble Tea","タピオカ"],["Paris 1ᵉʳ","パリ"],
+];
+function renderTicker(){
+  const t=document.getElementById('tickerTrack'); if(!t)return;
+  const sep='<span class="sep">◆</span>';
+  let cells=[];
+  TICKER.forEach(p=>{ cells.push('<span>'+p[0]+'</span>'); cells.push('<span class="jp">'+p[1]+'</span>'); });
+  const seq=cells.join(sep)+sep;
+  t.innerHTML=seq+seq; // doubled for seamless loop
+}
+
+/* ============ DATA: CUISINE FILMSTRIP ============ */
+const DISHES = [
+  {img:'image/bateau.webp',      fr:'Menu Bateau',      en:'Sushi Boat'},
+  {img:'image/ramen-naruto.png', fr:'Naruto Ramen',     en:'Naruto Ramen'},
+  {img:'image/nouilles-saute.png',fr:'Nouilles Sautées',en:'Stir-Fried Noodles'},
+  {img:'image/poke-saumon.png',  fr:'Poké Saumon',      en:'Salmon Poké'},
+  {img:'image/nems.jpg',         fr:'Nems',             en:'Spring Rolls'},
+  {img:'image/gyoza.png',        fr:'Gyoza',            en:'Gyoza'},
+  {img:'image/sushi2.jpg',       fr:'Sashimi Saumon',   en:'Salmon Sashimi'},
+  {img:'image/sushi3.jpg',       fr:'Makis',            en:'Maki Rolls'},
+];
+
+/* ============ DATA: MENU ============ */
+const MENU = [
+  { id:'entrees', icon:"🥟", img:"image/gyoza.png", fr:"Entrées", en:"Starters", subs:[
+    { fr:"Entrées & accompagnements", en:"Starters & sides", items:[
+      {n:"L01 · Soupe miso", ne:"L01 · Miso soup", p:"3,00 €"},
+      {n:"L02 · Salade crudités", ne:"L02 · Raw veg salad", d:"Chou blanc", de:"White cabbage", p:"3,00 €"},
+      {n:"L03 · Riz nature", ne:"L03 · Plain rice", p:"3,00 €"},
+      {n:"L04 · Riz vinaigré", ne:"L04 · Sushi rice", p:"3,50 €"},
+      {n:"L05 · Wakame", d:"Salade d'algues", de:"Seaweed salad", p:"5,50 €"},
+      {n:"L06 · Edamame", d:"Fèves de soja", de:"Soybeans", p:"5,20 €"},
+      {n:"L07 · Takoyaki", d:"4 pièces", de:"4 pcs", p:"8,90 €"},
+      {n:"L08 · Salade de saumon", ne:"L08 · Salmon salad", p:"16,90 €"},
+      {n:"L10 · Salade de poulet pané", ne:"L10 · Breaded chicken salad", p:"16,90 €"},
+      {n:"L09 · Samoussa", ne:"L09 · Samosa", p:"7,50 €"},
+      {n:"L11 · Gyoza poulet", ne:"L11 · Chicken gyoza", d:"Raviolis poulet & légumes · 6 pièces", de:"Chicken & veg dumplings · 6 pcs", p:"7,50 €"},
+      {n:"L12 · Gyoza végétarien", ne:"L12 · Vegetarian gyoza", d:"Raviolis légumes · 6 pièces", de:"Veg dumplings · 6 pcs", p:"7,50 €"},
+      {n:"L14 · Nems au poulet", ne:"L14 · Chicken spring rolls", d:"4 pièces", de:"4 pcs", p:"7,00 €"},
+      {n:"L15 · Nems aux crevettes", ne:"L15 · Shrimp spring rolls", d:"4 pièces", de:"4 pcs", p:"8,00 €"},
+      {n:"L17 · Beignets de poulet", ne:"L17 · Chicken fritters", d:"6 pièces", de:"6 pcs", p:"8,50 €"},
+      {n:"L18 · Tempura de calamars", ne:"L18 · Squid tempura", d:"6 pièces", de:"6 pcs", p:"7,50 €"},
+      {n:"L19 · Tempura de crevettes", ne:"L19 · Shrimp tempura", d:"3 pièces", de:"3 pcs", p:"7,50 €"},
+      {n:"L20 · Tempura mixtes", ne:"L20 · Mixed tempura", d:"2 crevette, 2 calamar, 2 poulet, 2 aile de poulet", de:"2 shrimp, 2 squid, 2 chicken, 2 chicken wing", p:"14,90 €"},
+    ]},
+  ]},
+  { id:'ramen', icon:"🍜", img:"image/ramen-naruto.png", fr:"Ramen & Plats chauds", en:"Ramen & Hot dishes", subs:[
+    { fr:"Ramen", en:"Ramen", items:[
+      {n:"R1 · Naruto Ramen classique", ne:"R1 · Naruto Ramen classic", d:"Bouillon tonkotsu, nouilles fraîches, 2 chashu de porc, porc haché pimenté, ciboule, champignon noir, soja, naruto, menma", de:"Pork tonkotsu broth, fresh noodles, 2 pork chashu, spicy minced pork, scallion, black mushroom, soy, naruto, menma", p:"16,50 €"},
+      {n:"R1B · Naruto Ramen royal", ne:"R1B · Naruto Ramen royal", d:"4 chashu, œuf mollet & 2 feuilles d'algue", de:"4 chashu, soft egg & 2 nori sheets", p:"21,50 €"},
+      {n:"R2 · Wonton classique", ne:"R2 · Wonton classic", d:"Tonkotsu, 2 chashu de porc, 2 wontons crevette, ciboule, champignon noir, soja, naruto, menma", de:"Tonkotsu, 2 pork chashu, 2 shrimp wontons, scallion, black mushroom, soy, naruto, menma", p:"16,50 €"},
+      {n:"R2B · Wonton royal", ne:"R2B · Wonton royal", d:"4 chashu, 2 wontons, œuf mollet & 2 feuilles d'algue", de:"4 chashu, 2 wontons, soft egg & 2 nori sheets", p:"22,50 €"},
+      {n:"R3 · Bœuf classique", ne:"R3 · Beef classic", d:"Bouillon tantan, nouilles fraîches, 2 chashu de bœuf, ciboule, champignon noir, menma, soja, naruto", de:"Tantan broth, fresh noodles, 2 beef chashu, scallion, black mushroom, menma, soy, naruto", p:"15,50 €"},
+      {n:"R3B · Bœuf royal", ne:"R3B · Beef royal", d:"4 chashu de bœuf, œuf mollet & 2 feuilles d'algue", de:"4 beef chashu, soft egg & 2 nori sheets", p:"21,50 €"},
+      {n:"R4 · Shoyu Ramen", ne:"R4 · Shoyu Ramen", d:"Bouillon de porc sauce soja, 2 chashu de porc, ciboule, champignon noir, menma, naruto", de:"Pork soy-sauce broth, 2 pork chashu, scallion, black mushroom, menma, naruto", p:"14,50 €"},
+      {n:"R4B · Shoyu Ramen royal", ne:"R4B · Shoyu Ramen royal", d:"4 chashu, œuf mollet & 2 feuilles d'algue", de:"4 chashu, soft egg & 2 nori sheets", p:"20,50 €"},
+      {n:"R5 · Chicken Ramen classique", ne:"R5 · Chicken Ramen classic", d:"Bouillon de poulet fermier au miso, 3 chashu poulet, ciboule, champignon noir, soja, naruto, menma", de:"Free-range chicken miso broth, 3 chicken chashu, scallion, black mushroom, soy, naruto, menma", p:"14,50 €"},
+      {n:"R5B · Chicken Ramen royal", ne:"R5B · Chicken Ramen royal", d:"Sauce pimentée maison, 3 chashu poulet, 6 raviolis poulet", de:"Homemade chili sauce, 3 chicken chashu, 6 chicken dumplings", p:"20,50 €"},
+      {n:"R6 · Végétarien classique", ne:"R6 · Vegetarian classic", d:"Bouillon de légumes au miso, maïs, edamame, champignon noir, menma, ciboule", de:"Vegetable miso broth, corn, edamame, black mushroom, menma, scallion", p:"14,50 €"},
+      {n:"R6B · Végétarien royal", ne:"R6B · Vegetarian royal", d:"+ 6 raviolis légumes", de:"+ 6 veg dumplings", p:"20,50 €"},
+    ]},
+    { fr:"Nouilles, riz & bao", en:"Noodles, rice & bao", items:[
+      {n:"R10 · Nouilles sautées", ne:"R10 · Stir-fried noodles", d:"Aux légumes", de:"With vegetables", p:"11,50 €"},
+      {n:"R11 · Nouilles sautées tempura", ne:"R11 · Tempura stir-fried noodles", d:"Tempura de crevette", de:"Shrimp tempura", p:"14,50 €"},
+      {n:"R12 · Nouilles sautées poulet pané", ne:"R12 · Breaded chicken stir-fried noodles", p:"16,90 €"},
+      {n:"L21 · Riz cantonais aux légumes", ne:"L21 · Cantonese fried rice with vegetables", p:"11,50 €"},
+      {n:"L22 · Riz cantonais au poulet pané", ne:"L22 · Cantonese fried rice with breaded chicken", p:"16,90 €"},
+      {n:"L25 · Bao poulet", ne:"L25 · Chicken bao", p:"12,50 €"},
+      {n:"L26 · Bao crevette", ne:"L26 · Shrimp bao", p:"13,00 €"},
+    ]},
+  ]},
+  { id:'pokes', icon:"🥗", img:"image/poke-saumon.png", fr:"Pokés", en:"Poké bowls", subs:[
+    { fr:"Pokés signatures", en:"Signature poké", items:[
+      {n:"P1 · Poké saumon", ne:"P1 · Salmon poké", d:"Riz, avocat, edamame, mangue, concombre, carotte, radis rouge, chou rouge & blanc, sésame", de:"Rice, avocado, edamame, mango, cucumber, carrot, red radish, red & white cabbage, sesame", p:"18,50 €"},
+      {n:"P2 · Poké poulet", ne:"P2 · Chicken poké", d:"Riz, avocat, edamame, mangue, concombre, carotte, radis rouge, chou rouge & blanc, sésame", de:"Rice, avocado, edamame, mango, cucumber, carrot, red radish, red & white cabbage, sesame", p:"15,50 €"},
+      {n:"P3 · Poké tempura crevette", ne:"P3 · Shrimp tempura poké", d:"Riz, avocat, edamame, mangue, concombre, carotte, radis rouge, chou rouge & blanc, sésame", de:"Rice, avocado, edamame, mango, cucumber, carrot, red radish, red & white cabbage, sesame", p:"15,50 €"},
+      {n:"P4 · Poké végétarien", ne:"P4 · Vegetarian poké", d:"Riz, avocat, edamame, mangue, concombre, carotte, radis rouge, chou rouge & blanc, sésame", de:"Rice, avocado, edamame, mango, cucumber, carrot, red radish, red & white cabbage, sesame", p:"15,50 €"},
+    ]},
+  ]},
+  { id:'sushi', icon:"🍣", img:"image/sushi2.jpg", fr:"Sushi & Sashimi", en:"Sushi & Sashimi", subs:[
+    { fr:"Sushi · 2 pièces", en:"Sushi · 2 pcs", items:[
+      {n:"S01 · Saumon", ne:"S01 · Salmon", d:"Shake", p:"5,00 €"},
+      {n:"S02 · Thon", ne:"S02 · Tuna", d:"Maguro", p:"5,50 €"},
+      {n:"S03 · Crevette", ne:"S03 · Shrimp", d:"Ebi", p:"5,00 €"},
+      {n:"S04 · Poulpe", ne:"S04 · Octopus", d:"Tako", p:"5,50 €"},
+      {n:"S05 · Daurade", ne:"S05 · Sea bream", d:"Tai", p:"5,00 €"},
+      {n:"S06 · Maquereau", ne:"S06 · Mackerel", d:"Saba", p:"5,00 €"},
+      {n:"S07 · Anguille", ne:"S07 · Eel", d:"Unagi", p:"7,00 €"},
+      {n:"S09 · Thon cuit", ne:"S09 · Cooked tuna", p:"5,20 €"},
+      {n:"S10 · Tobiko", p:"6,50 €"},
+      {n:"S11 · Avocat", ne:"S11 · Avocado", p:"5,00 €"},
+      {n:"S12 · Saumon fromage", ne:"S12 · Salmon cheese", p:"5,60 €"},
+      {n:"S13 · Saumon avocat", ne:"S13 · Salmon avocado", p:"5,60 €"},
+      {n:"S14 · Saumon mi-cuit", ne:"S14 · Seared salmon", p:"6,50 €"},
+      {n:"S15 · Tartare de saumon", ne:"S15 · Salmon tartare", p:"6,50 €"},
+    ]},
+    { fr:"Sashimi", en:"Sashimi", items:[
+      {n:"K01 · Saumon", ne:"K01 · Salmon", p:"10,00 €"},
+      {n:"K02 · Thon", ne:"K02 · Tuna", p:"12,00 €"},
+      {n:"K03 · Poulpe", ne:"K03 · Octopus", p:"11,50 €"},
+      {n:"K04 · Daurade", ne:"K04 · Sea bream", p:"10,00 €"},
+      {n:"K05 · Maquereau", ne:"K05 · Mackerel", p:"10,00 €"},
+      {n:"K06 · Anguille", ne:"K06 · Eel", p:"12,50 €"},
+      {n:"K07 · Assortiment sashimi", ne:"K07 · Sashimi assortment", d:"12 pièces", de:"12 pcs", p:"14,90 €"},
+    ]},
+  ]},
+  { id:'makis', icon:"🍙", img:"image/sushi3.jpg", fr:"Makis & Rolls", en:"Maki & Rolls", subs:[
+    { fr:"Rolls signatures", en:"Signature rolls", items:[
+      {n:"V01 · Rainbow Roll", d:"Ext. saumon, thon, avocat, sauce spéciale · Int. surimi, avocat, concombre", de:"Out: salmon, tuna, avocado, special sauce · In: surimi, avocado, cucumber", p:"14,90 €"},
+      {n:"V02 · Green California", d:"Ext. aneth · Int. saumon, avocat, concombre", de:"Out: dill · In: salmon, avocado, cucumber", p:"11,90 €"},
+      {n:"V03 · Anguille Roll", ne:"V03 · Eel Roll", d:"Ext. anguille grillée, bonite fumée, sauce anguille · Int. saumon, avocat, concombre", de:"Out: grilled eel, smoked bonito, eel sauce · In: salmon, avocado, cucumber", p:"18,90 €"},
+      {n:"V04 · Crunchy Roll", d:"Ext. aneth · Int. crunchy sauce spéciale, avocat", de:"Out: dill · In: crunchy special sauce, avocado", p:"14,90 €"},
+      {n:"V05 · Mille-feuille", p:"17,90 €"},
+      {n:"V06 · Tempura Roll", d:"Ext. saumon, sauce spéciale · Int. beignet de crevette, cheese, concombre", de:"Out: salmon, special sauce · In: shrimp fritter, cheese, cucumber", p:"14,90 €"},
+      {n:"V07 · Dragon Roll", d:"Ext. avocat, tobiko, sauce spéciale · Int. tempura crevette, concombre", de:"Out: avocado, tobiko, special sauce · In: shrimp tempura, cucumber", p:"15,90 €"},
+      {n:"V08 · Crispy Oignon Roll", ne:"V08 · Crispy Onion Roll", d:"Ext. oignons frits, bonite fumée, sauce spéciale · Int. saumon, avocat", de:"Out: fried onions, smoked bonito, special sauce · In: salmon, avocado", p:"11,90 €"},
+      {n:"V09 · Norvégien Roll", ne:"V09 · Norwegian Roll", d:"Ext. saumon mi-cuit, ciboulette, sauce spéciale · Int. saumon, avocat", de:"Out: seared salmon, chives, special sauce · In: salmon, avocado", p:"13,90 €"},
+      {n:"V10 · Crunchy Fromage Roll", ne:"V10 · Crunchy Cheese Roll", d:"Ext. crunchy, sauce spéciale · Int. bœuf au fromage", de:"Out: crunchy, special sauce · In: beef & cheese", p:"14,90 €"},
+      {n:"V11 · Cheese Chicken Roll", p:"19,90 €"},
+      {n:"V12 · Crunchy Tempura Roll", p:"15,90 €"},
+      {n:"V14 · Végétarien Roll", ne:"V14 · Vegetarian Roll", p:"14,90 €"},
+      {n:"V15 · Crunchy Végétarien Roll", ne:"V15 · Crunchy Vegetarian Roll", p:"14,90 €"},
+      {n:"V16 · Tokyo Roll", p:"16,90 €"},
+      {n:"V17 · Tuna Roll", p:"18,90 €"},
+      {n:"V18 · Spicy Tuna Roll", p:"20,90 €"},
+      {n:"V19 · Tiger Roll", p:"15,90 €"},
+    ]},
+    { fr:"California maki · 6 pièces", en:"California maki · 6 pcs", items:[
+      {n:"S31 · Avocat saumon", ne:"S31 · Avocado salmon", p:"6,20 €"},
+      {n:"S32 · Avocat thon", ne:"S32 · Avocado tuna", p:"6,20 €"},
+      {n:"S33 · Avocat thon cuit", ne:"S33 · Avocado cooked tuna", p:"6,20 €"},
+      {n:"S34 · Avocat crevette", ne:"S34 · Avocado shrimp", p:"6,20 €"},
+      {n:"S35 · Avocat surimi", ne:"S35 · Avocado surimi", p:"6,20 €"},
+      {n:"S36 · Saumon Las Vegas", ne:"S36 · Salmon Las Vegas", p:"7,70 €"},
+      {n:"S37 · Saumon cheese", ne:"S37 · Salmon cheese", p:"6,20 €"},
+      {n:"S38 · Avocat cheese", ne:"S38 · Avocado cheese", p:"6,20 €"},
+      {n:"S39 · Avocat concombre", ne:"S39 · Avocado cucumber", p:"6,20 €"},
+      {n:"S40 · Tempura crevette", ne:"S40 · Shrimp tempura", p:"8,50 €"},
+    ]},
+    { fr:"California spécial", en:"California special", items:[
+      {n:"S41 · Saumon avocat", ne:"S41 · Salmon avocado", p:"7,50 €"},
+      {n:"S42 · Thon avocat", ne:"S42 · Tuna avocado", p:"7,50 €"},
+      {n:"S43 · Thon cuit avocat", ne:"S43 · Cooked tuna avocado", p:"7,50 €"},
+      {n:"S44 · Crevette avocat", ne:"S44 · Shrimp avocado", p:"7,50 €"},
+      {n:"S45 · Surimi avocat", ne:"S45 · Surimi avocado", p:"7,50 €"},
+      {n:"S46 · Futomaki", d:"5 pièces", de:"5 pcs", p:"9,50 €"},
+      {n:"S47 · Saumon cheese", ne:"S47 · Salmon cheese", p:"7,50 €"},
+      {n:"S48 · Avocat cheese", ne:"S48 · Avocado cheese", p:"7,50 €"},
+      {n:"S49 · Avocat concombre", ne:"S49 · Avocado cucumber", p:"7,50 €"},
+    ]},
+    { fr:"Saumon roll", en:"Salmon roll", items:[
+      {n:"S51 · Saumon", ne:"S51 · Salmon", p:"6,20 €"},
+      {n:"S52 · Thon", ne:"S52 · Tuna", p:"6,20 €"},
+      {n:"S53 · Avocat", ne:"S53 · Avocado", p:"6,20 €"},
+      {n:"S54 · Saumon cheese", ne:"S54 · Salmon cheese", p:"6,20 €"},
+      {n:"S55 · Avocat cheese", ne:"S55 · Avocado cheese", p:"6,20 €"},
+    ]},
+    { fr:"Maki · 6 pièces", en:"Maki · 6 pcs", items:[
+      {n:"S61 · Saumon", ne:"S61 · Salmon", d:"Shake", p:"5,20 €"},
+      {n:"S62 · Thon", ne:"S62 · Tuna", d:"Maguro", p:"6,00 €"},
+      {n:"S63 · Thon cuit", ne:"S63 · Cooked tuna", p:"5,20 €"},
+      {n:"S64 · Mangue", ne:"S64 · Mango", p:"5,20 €"},
+      {n:"S65 · Concombre", ne:"S65 · Cucumber", d:"Kappa", p:"5,20 €"},
+      {n:"S66 · Avocat", ne:"S66 · Avocado", p:"5,20 €"},
+      {n:"S67 · Anguille", ne:"S67 · Eel", d:"Unagi", p:"6,50 €"},
+      {n:"S68 · Fromage", ne:"S68 · Cheese", d:"Cheese", p:"5,20 €"},
+      {n:"S69 · Crevette", ne:"S69 · Shrimp", d:"Ebi", p:"5,20 €"},
+      {n:"S70 · Saumon fromage", ne:"S70 · Salmon cheese", p:"6,00 €"},
+    ]},
+    { fr:"Spring rolls", en:"Spring rolls", items:[
+      {n:"S21 · Cheese", p:"8,00 €"},
+      {n:"S22 · Saumon cheese", ne:"S22 · Salmon cheese", p:"8,00 €"},
+      {n:"S23 · Thon cuit avocat", ne:"S23 · Cooked tuna avocado", p:"8,00 €"},
+      {n:"S24 · Avocat cheese", ne:"S24 · Avocado cheese", p:"8,00 €"},
+      {n:"S25 · Avocat saumon", ne:"S25 · Avocado salmon", p:"8,00 €"},
+    ]},
+    { fr:"Temaki", en:"Temaki", items:[
+      {n:"T01 · Saumon avocat", ne:"T01 · Salmon avocado", p:"5,50 €"},
+      {n:"T02 · Thon avocat", ne:"T02 · Tuna avocado", p:"6,00 €"},
+      {n:"T03 · Crevette avocat", ne:"T03 · Shrimp avocado", p:"5,50 €"},
+      {n:"T04 · Surimi avocat", ne:"T04 · Surimi avocado", p:"5,50 €"},
+      {n:"T05 · Anguille avocat", ne:"T05 · Eel avocado", p:"6,50 €"},
+    ]},
+  ]},
+  { id:'brochettes', icon:"🍢", fr:"Brochettes", en:"Skewers", subs:[
+    { fr:"Brochettes · Yakitori", en:"Skewers · Yakitori", items:[
+      {n:"B01 · Poulet", ne:"B01 · Chicken", p:"5,00 €"},
+      {n:"B02 · Boulette de poulet", ne:"B02 · Chicken meatball", p:"4,50 €"},
+      {n:"B03 · Bœuf au fromage", ne:"B03 · Beef & cheese", p:"5,00 €"},
+      {n:"B04 · Saumon", ne:"B04 · Salmon", p:"5,50 €"},
+      {n:"B05 · Thon", ne:"B05 · Tuna", p:"6,50 €"},
+      {n:"B06 · Gambas", ne:"B06 · King prawn", p:"7,00 €"},
+      {n:"B07 · Coquille St-Jacques", ne:"B07 · Scallop", p:"9,00 €"},
+      {n:"B08 · Courgette", ne:"B08 · Zucchini", p:"5,00 €"},
+      {n:"B09 · Champignon", ne:"B09 · Mushroom", p:"4,50 €"},
+    ]},
+  ]},
+  { id:'menus', icon:"🍱", img:"image/sushi6.jpg", fr:"Menus", en:"Sets", subs:[
+    { fr:"Menus au choix & chirashi", en:"Build-your-own & chirashi", items:[
+      {n:"MC1 · 2 plats au choix", ne:"MC1 · 2 dishes of your choice", p:"14,50 €"},
+      {n:"MC2 · 3 plats au choix", ne:"MC2 · 3 dishes of your choice", p:"18,50 €"},
+      {n:"MC3 · 4 plats au choix", ne:"MC3 · 4 dishes of your choice", p:"25,00 €"},
+      {n:"M01", d:"Soupe, salade. Grand bol de riz vinaigré au saumon", de:"Soup, salad. Large sushi-rice bowl with salmon", p:"14,50 €"},
+      {n:"M02", d:"Soupe, salade. Riz vinaigré saumon & thon", de:"Soup, salad. Sushi rice, salmon & tuna", p:"16,50 €"},
+      {n:"M03", d:"Soupe, salade. Riz vinaigré, assortiment de poisson", de:"Soup, salad. Sushi rice, fish assortment", p:"17,50 €"},
+      {n:"M04", d:"Soupe, salade. Riz vinaigré, anguille grillée", de:"Soup, salad. Sushi rice, grilled eel", p:"19,50 €"},
+      {n:"M05", d:"Soupe, salade. Riz vinaigré, poulet pané 8 pièces", de:"Soup, salad. Sushi rice, breaded chicken 8 pcs", p:"16,90 €"},
+      {n:"M06", d:"Soupe, salade. Riz vinaigré, saumon & avocat", de:"Soup, salad. Sushi rice, salmon & avocado", p:"16,50 €"},
+      {n:"M07", d:"Soupe, salade. 6 sushi assortis, 6 california (saumon avocat)", de:"Soup, salad. 6 assorted sushi, 6 california (salmon avocado)", p:"16,50 €"},
+      {n:"M08A", d:"Soupe, salade. 10 sushi assortis", de:"Soup, salad. 10 assorted sushi", p:"19,00 €"},
+      {n:"M08B", d:"Soupe, salade. 10 sushi saumon", de:"Soup, salad. 10 salmon sushi", p:"18,00 €"},
+      {n:"M09", d:"Soupe, salade. 12 maki (6 saumon, 6 thon), 6 california", de:"Soup, salad. 12 maki (6 salmon, 6 tuna), 6 california", p:"15,50 €"},
+      {n:"M10", d:"Soupe, salade. 5 sushi saumon, 8 california tempura crevette", de:"Soup, salad. 5 salmon sushi, 8 shrimp tempura california", p:"17,50 €"},
+      {n:"M11", d:"Soupe, salade. 12 maki Las Vegas, 2 sushi saumon", de:"Soup, salad. 12 Las Vegas maki, 2 salmon sushi", p:"18,50 €"},
+      {n:"M12", d:"Soupe, salade. 5 sushi saumon mi-cuit, 8 maki Las Vegas", de:"Soup, salad. 5 seared salmon sushi, 8 Las Vegas maki", p:"20,90 €"},
+      {n:"M14 · Végétarien", ne:"M14 · Vegetarian", d:"Soupe, salade. 12 maki (concombre, avocat), 6 california", de:"Soup, salad. 12 maki (cucumber, avocado), 6 california", p:"15,50 €"},
+      {n:"M15", d:"Soupe, salade. 12 saumon roll, 3 sushi saumon", de:"Soup, salad. 12 salmon roll, 3 salmon sushi", p:"20,80 €"},
+      {n:"M16A", d:"Soupe, salade, riz. 4 sushi, 6 california, 9 sashimi assortis", de:"Soup, salad, rice. 4 sushi, 6 california, 9 assorted sashimi", p:"20,50 €"},
+      {n:"M16B", d:"Soupe, salade, riz. 4 sushi, 6 california, 9 sashimi saumon", de:"Soup, salad, rice. 4 sushi, 6 california, 9 salmon sashimi", p:"20,00 €"},
+      {n:"M17", d:"Soupe, salade, riz. 6 gyoza, 6 sashimi saumon, 6 maki saumon", de:"Soup, salad, rice. 6 gyoza, 6 salmon sashimi, 6 salmon maki", p:"18,50 €"},
+      {n:"M18", d:"Soupe, salade. 6 saumon roll, 6 sashimi saumon, 3 sushi saumon", de:"Soup, salad. 6 salmon roll, 6 salmon sashimi, 3 salmon sushi", p:"20,80 €"},
+      {n:"M19", d:"Soupe, salade, riz. 15 sashimi assortis ou saumon", de:"Soup, salad, rice. 15 assorted or salmon sashimi", p:"17,50 €"},
+      {n:"M20", d:"Soupe, salade, riz. 20 sashimi assortis ou saumon", de:"Soup, salad, rice. 20 assorted or salmon sashimi", p:"22,50 €"},
+    ]},
+    { fr:"Menus brochettes & plateaux", en:"Skewer sets & platters", items:[
+      {n:"M21", d:"Soupe, salade, riz. 5 brochettes bœuf au fromage", de:"Soup, salad, rice. 5 beef & cheese skewers", p:"14,00 €"},
+      {n:"M22", d:"Soupe, salade, riz. 5 brochettes : poulet & boulettes de poulet", de:"Soup, salad, rice. 5 skewers: chicken & chicken meatballs", p:"14,00 €"},
+      {n:"M23", d:"Soupe, salade, riz. 5 brochettes : 3 saumon, 2 thon", de:"Soup, salad, rice. 5 skewers: 3 salmon, 2 tuna", p:"17,50 €"},
+      {n:"M24", d:"Soupe, salade, riz. 8 brochettes assorties", de:"Soup, salad, rice. 8 assorted skewers", p:"18,50 €"},
+      {n:"M31", d:"6 sashimi, 4 sushi + 5 brochettes", de:"6 sashimi, 4 sushi + 5 skewers", p:"19,90 €"},
+      {n:"M32", d:"6 Las Vegas + 5 brochettes", de:"6 Las Vegas + 5 skewers", p:"17,50 €"},
+      {n:"M33", d:"5 sushi assortis + 5 brochettes", de:"5 assorted sushi + 5 skewers", p:"17,50 €"},
+      {n:"M34", d:"9 sashimi assortis + 5 brochettes", de:"9 assorted sashimi + 5 skewers", p:"18,50 €"},
+      {n:"M35", d:"9 sashimi saumon, 6 california + 5 brochettes", de:"9 salmon sashimi, 6 california + 5 skewers", p:"20,90 €"},
+      {n:"M36", d:"6 gyoza + 5 brochettes", de:"6 gyoza + 5 skewers", p:"17,00 €"},
+      {n:"M38", d:"4 nems poulet + 5 brochettes", de:"4 chicken spring rolls + 5 skewers", p:"17,00 €"},
+      {n:"M39", d:"6 saumon roll, 3 sushi saumon + 5 brochettes", de:"6 salmon roll, 3 salmon sushi + 5 skewers", p:"20,90 €"},
+      {n:"M41", d:"Soupe, salade, riz. Tempura crevette 6 pièces", de:"Soup, salad, rice. Shrimp tempura 6 pcs", p:"15,00 €"},
+      {n:"M42", d:"Soupe, salade, riz. Tempura mixte", de:"Soup, salad, rice. Mixed tempura", p:"18,90 €"},
+      {n:"M55", d:"1 pers. 12 sashimi, 4 sushi, 6 Las Vegas, 3 brochettes", de:"1 person. 12 sashimi, 4 sushi, 6 Las Vegas, 3 skewers", p:"30,90 €"},
+      {n:"M66", d:"2 soupes, 2 salades, edamame. 8 crispy oignon roll, 8 tempura roll, 8 rainbow roll", de:"2 soups, 2 salads, edamame. 8 crispy onion roll, 8 tempura roll, 8 rainbow roll", p:"44,90 €"},
+      {n:"M88", d:"2 pers. 10 sushi, 6 maki saumon, 6 california, 6 saumon roll, 6 Las Vegas", de:"2 people. 10 sushi, 6 salmon maki, 6 california, 6 salmon roll, 6 Las Vegas", p:"49,90 €"},
+      {n:"M99", d:"2 pers. 10 sushi, 6 maki saumon, 6 california, 20 sashimi, 8 brochettes", de:"2 people. 10 sushi, 6 salmon maki, 6 california, 20 sashimi, 8 skewers", p:"59,90 €"},
+    ]},
+    { fr:"Petits menus", en:"Small sets", items:[
+      {n:"MD1", d:"Soupe, salade, riz. 5 brochettes : 2 bœuf fromage, 2 boulette poulet, 1 poulet", de:"Soup, salad, rice. 5 skewers: 2 beef-cheese, 2 chicken meatball, 1 chicken", p:"12,00 €"},
+      {n:"MD2", d:"Soupe, salade, riz. 4 brochettes saumon", de:"Soup, salad, rice. 4 salmon skewers", p:"14,00 €"},
+      {n:"MD3", d:"Soupe, salade. 6 maki saumon, 5 sushi", de:"Soup, salad. 6 salmon maki, 5 sushi", p:"14,00 €"},
+      {n:"MD4", d:"Soupe, salade, riz. 6 sashimi saumon, 6 maki saumon", de:"Soup, salad, rice. 6 salmon sashimi, 6 salmon maki", p:"14,00 €"},
+      {n:"MD5", d:"8 sushi saumon", de:"8 salmon sushi", p:"14,00 €"},
+      {n:"MD6", d:"Soupe, salade, riz. 6 maki saumon, 3 brochettes", de:"Soup, salad, rice. 6 salmon maki, 3 skewers", p:"14,00 €"},
+    ]},
+  ]},
+  { id:'desserts', icon:"🍡", fr:"Desserts", en:"Desserts", subs:[
+    { fr:"Desserts", en:"Desserts", items:[
+      {n:"Mystère vanille", ne:"Vanilla Mystère", p:"5,50 €"},
+      {n:"Perle coco", ne:"Coconut pearl", p:"4,50 €"},
+      {n:"Coco givré", ne:"Frosted coconut", p:"6,50 €"},
+      {n:"Nougat glacé", ne:"Iced nougat", p:"5,90 €"},
+      {n:"Tiramisu glacé", ne:"Iced tiramisu", p:"6,90 €"},
+      {n:"Cheesecake yuzu", ne:"Yuzu cheesecake", p:"5,90 €"},
+      {n:"Mochi", p:"6,50 €"},
+      {n:"Gâteau dorayaki", ne:"Dorayaki cake", p:"5,50 €"},
+    ]},
+  ]},
+  { id:'boissons', icon:"🥤", fr:"Boissons", en:"Drinks", subs:[
+    { fr:"Boissons", en:"Soft drinks", items:[
+      {n:"Café double", ne:"Double espresso", p:"5,60 €"},
+      {n:"Ice coffee", p:"6,00 €"},
+      {n:"Café orange 30cl", ne:"Orange coffee 30cl", p:"8,00 €"},
+      {n:"Kirin sans alcool 33cl", ne:"Kirin alcohol-free 33cl", p:"6,50 €"},
+      {n:"Citron pressé", ne:"Fresh lemon juice", p:"6,50 €"},
+      {n:"Orange pressée", ne:"Fresh orange juice", p:"6,50 €"},
+    ]},
+    { fr:"Cocktails Happy Hour · 16h–21h", en:"Happy Hour cocktails · 4–9pm", items:[
+      {n:"Happy Virgin Mojito fraise", ne:"Happy Virgin Strawberry Mojito", p:"7,00 €"},
+      {n:"Happy Virgin Mojito passion", ne:"Happy Virgin Passion Mojito", p:"7,00 €"},
+      {n:"Happy Virgin Mojito kiwi", ne:"Happy Virgin Kiwi Mojito", p:"7,00 €"},
+      {n:"Happy Matcha Strawberry", p:"7,00 €"},
+      {n:"Virgin Blue Lagon", ne:"Virgin Blue Lagoon", p:"7,00 €"},
+    ]},
+    { fr:"Bières & Cocktails", en:"Beers & Cocktails", items:[
+      {n:"Virgin Mojito fraise", ne:"Virgin Strawberry Mojito", p:"10,50 €"},
+      {n:"Virgin Mojito passion", ne:"Virgin Passion Mojito", p:"10,50 €"},
+      {n:"Virgin Mojito kiwi", ne:"Virgin Kiwi Mojito", p:"10,50 €"},
+      {n:"Virgin Blue Lagon", ne:"Virgin Blue Lagoon", p:"8,50 €"},
+      {n:"Matcha Strawberry", p:"10,50 €"},
+    ]},
+    { fr:"Bubble Tea fruits", en:"Fruit Bubble Tea", items:[
+      {n:"Fraise", ne:"Strawberry", d:"Perles de fruit", de:"Fruit pearls", p:""},
+      {n:"Mangue", ne:"Mango", d:"Perles de fruit", de:"Fruit pearls", p:""},
+      {n:"Passion", ne:"Passion fruit", d:"Perles de fruit", de:"Fruit pearls", p:""},
+      {n:"Litchi", ne:"Lychee", d:"Perles de fruit", de:"Fruit pearls", p:""},
+      {n:"Pêche", ne:"Peach", d:"Perles de fruit", de:"Fruit pearls", p:""},
+      {n:"Pastèque", ne:"Watermelon", d:"Perles de fruit", de:"Fruit pearls", p:""},
+      {n:"Kiwi", d:"Perles de fruit", de:"Fruit pearls", p:""},
+    ]},
+    { fr:"Bubble Tea au lait", en:"Milk Bubble Tea", items:[
+      {n:"Taro", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+      {n:"Matcha", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+      {n:"Thé thaï", ne:"Thai tea", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+      {n:"Vanille", ne:"Vanilla", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+      {n:"Chocolat", ne:"Chocolate", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+      {n:"Caramel", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+      {n:"Coco", ne:"Coconut", d:"Perles de tapioca", de:"Tapioca pearls", p:""},
+    ]},
+  ]},
+  { id:'vins', icon:"🍶", fr:"Vins & Alcools", en:"Wine & Spirits", subs:[
+    { fr:"Champagne & Prosecco", en:"Champagne & Prosecco", items:[
+      {n:"Champagne", d:"12cl", p:"10,00 €"},
+      {n:"Champagne", d:"75cl", p:"49,90 €"},
+      {n:"Prosecco", d:"12cl", p:"7,00 €"},
+      {n:"Prosecco", d:"75cl", p:"39,90 €"},
+    ]},
+    { fr:"Vins rouges", en:"Red wines", items:[
+      {n:"Bourgogne", ne:"Burgundy", d:"12cl · 25cl · 50cl · 75cl", p:"5 · 9 · 16 · 22 €"},
+      {n:"Côtes du Rhône", d:"12cl · 25cl · 50cl · 75cl", p:"6,50 · 12,50 · 22 · 29 €"},
+      {n:"Saint-Émilion", d:"75cl", p:"38,00 €"},
+    ]},
+    { fr:"Vins blancs", en:"White wines", items:[
+      {n:"Sauvignon", d:"12cl · 25cl · 50cl · 75cl", p:"5 · 9 · 16 · 22 €"},
+      {n:"Chardonnay", d:"12cl · 25cl · 50cl · 75cl", p:"6,50 · 12,50 · 22 · 29 €"},
+      {n:"Muscadet", d:"12cl · 25cl · 50cl · 75cl", p:"6,50 · 12,50 · 22 · 29 €"},
+      {n:"Chablis", d:"75cl", p:"38,00 €"},
+    ]},
+    { fr:"Vins rosés", en:"Rosé wines", items:[
+      {n:"Château Paradis", d:"12cl · 25cl · 50cl · 75cl", p:"5 · 9 · 16 · 22 €"},
+      {n:"Côtes de Provence", d:"12cl · 25cl · 50cl · 75cl", p:"6,50 · 12,50 · 22 · 29 €"},
+      {n:"Sancerre", d:"75cl", p:"38,00 €"},
+    ]},
+    { fr:"Apéritifs", en:"Aperitifs", items:[
+      {n:"Ricard", p:"5,50 €"},
+      {n:"Martini rouge", ne:"Martini red", p:"6,50 €"},
+      {n:"Martini blanc", ne:"Martini white", p:"6,50 €"},
+      {n:"Kir Chardonnay cassis", ne:"Chardonnay Kir blackcurrant", p:"6,50 €"},
+      {n:"Kir Chardonnay mûre", ne:"Chardonnay Kir blackberry", p:"6,50 €"},
+      {n:"Kir Royal", p:"10,00 €"},
+      {n:"Porto rouge", ne:"Red port", p:"5,50 €"},
+      {n:"Vin de prune", ne:"Plum wine", p:"6,50 €"},
+    ]},
+    { fr:"Alcools & Digestifs", en:"Spirits & Digestifs", items:[
+      {n:"JB", p:"8,00 €"},
+      {n:"Vodka", p:"8,00 €"},
+      {n:"Gin", p:"8,00 €"},
+      {n:"Rhum", ne:"Rum", p:"10,00 €"},
+      {n:"Get 27", p:"8,00 €"},
+      {n:"Cointreau", p:"8,00 €"},
+      {n:"Saint Germain", p:"10,00 €"},
+      {n:"Baileys", p:"8,00 €"},
+      {n:"Whisky japonais", ne:"Japanese whisky", p:"12,00 €"},
+      {n:"Jack Daniel's", p:"10,00 €"},
+      {n:"Cognac", p:"12,00 €"},
+      {n:"Meiguilu", p:"10,00 €"},
+      {n:"Tequila", p:"8,00 €"},
+    ]},
+  ]},
+];
+
+/* ============ HOURS ============ */
+const HOURS = [
+  {fr:'Lundi', en:'Monday'},
+  {fr:'Mardi', en:'Tuesday'},
+  {fr:'Mercredi', en:'Wednesday'},
+  {fr:'Jeudi', en:'Thursday'},
+  {fr:'Vendredi', en:'Friday'},
+  {fr:'Samedi', en:'Saturday'},
+  {fr:'Dimanche', en:'Sunday'},
+];
+
+/* ============ I18N ============ */
+const I18N = {
+  fr:{
+    nav_about:"La Maison", nav_order:"Commander", nav_gallery:"Galerie", nav_menu:"Carte", nav_info:"Infos", nav_cta:"Commander",
+    cuis_kicker:"料理 · En cuisine — Nos plats", cuis_hint:"Glissez pour découvrir",
+    hero_eyebrow:"Cuisine Passion · Paris 1er",
+    hero_title:"Leader <em>Sushi</em>",
+    hero_lead:"L'art du sushi, au cœur de Paris.",
+    hero_uber:"🛵 Livraison Uber Eats", hero_cc:"🥡 Click &amp; Collect", hero_reserve:"📅 Réserver",
+    hero_rating:"sur Uber Eats", hero_open:"Ouvert 7j/7", hero_addr:"78 Rue Rambuteau, 75001 Paris",
+    about_sub:"おもてなし · Un pas vers l'ailleurs", about_title:"La Maison Leader Sushi",
+    about_p1:"Chez Leader Sushi, chaque plat est une invitation au voyage. Nos recettes savoureuses sont élaborées dans la pure tradition, avec des produits frais et soigneusement sélectionnés, pour vous faire explorer toute la richesse de la gastronomie asiatique.",
+    about_p2:"Notre salle chaleureuse accueille aussi bien les groupes, les collègues et les familles que les curieux découvrant la cuisine japonaise. Service continu, anniversaires, salle privatisable : tout est pensé pour un moment convivial.",
+    tag1:"🍣 Fait maison", tag2:"🌱 Options vegan", tag3:"🌶️ Plats épicés", tag4:"🎉 Salle privatisable", tag5:"🕛 Service continu",
+    order_kicker:"ご注文 · Commander", order_title:"Chez vous ou à emporter",
+    order_sub:"Savourez Leader Sushi où que vous soyez — livré à domicile, à emporter, ou sur place.",
+    oc1_t:"Livraison Uber Eats", oc1_p:"Faites-vous livrer toute la carte directement chez vous en quelques minutes.", oc1_b:"Commander",
+    oc2_t:"Click &amp; Collect", oc2_p:"Commandez en ligne et récupérez votre repas au restaurant, sans attente.", oc2_b:"Commander &amp; retirer",
+    oc3_t:"Sur place", oc3_p:"Réservez votre table ou venez profiter de notre salle, anniversaires bienvenus.", oc3_b:"📅 Réserver",
+    menu_kicker:"お品書き · Notre Carte", menu_title:"La Carte", menu_sub:"Une sélection de nos spécialités. Retrouvez la carte complète sur Uber Eats.",
+    menu_disclaimer:"Les prix peuvent varier selon le canal de commande. Carte complète et disponibilités sur Uber Eats.",
+    cta_title:"Une petite faim ?", cta_sub:"Commandez maintenant et savourez la cuisine Leader Sushi.",
+    cta_uber:"🛵 Uber Eats", cta_cc:"🥡 Click &amp; Collect", cta_reserve:"📅 Réserver",
+    info_kicker:"ご案内 · Nous trouver", info_title:"Horaires &amp; Contact",
+    hours_title:"🕛 Horaires d'ouverture", contact_title:"📍 Coordonnées",
+    lbl_addr:"Adresse", lbl_phone:"Téléphone", lbl_social:"Réseaux",
+    foot_about:"Cuisine japonaise &amp; asiatique faite maison au cœur de Paris. Sushi, ramen, poké &amp; makis.",
+    foot_nav:"Navigation", foot_order:"Commander", foot_contact:"Contact",
+    foot_call:"Réserver · 01 45 08 16 32", foot_hours:"Tous les jours · 11h–23h", foot_rights:"Tous droits réservés.",
+    hours_value:"11h00 – 23h00"
+  },
+  en:{
+    nav_about:"Our Story", nav_order:"Order", nav_gallery:"Gallery", nav_menu:"Menu", nav_info:"Info", nav_cta:"Order now",
+    cuis_kicker:"料理 · In the kitchen — Our dishes", cuis_hint:"Drag to explore",
+    hero_eyebrow:"Cuisine Passion · Paris 1st",
+    hero_title:"Leader <em>Sushi</em>",
+    hero_lead:"The art of sushi, in the heart of Paris.",
+    hero_uber:"🛵 Order on Uber Eats", hero_cc:"🥡 Click &amp; Collect", hero_reserve:"📅 Book a table",
+    hero_rating:"on Uber Eats", hero_open:"Open 7 days", hero_addr:"78 Rue Rambuteau, 75001 Paris",
+    about_sub:"おもてなし · A step somewhere else", about_title:"The Leader Sushi House",
+    about_p1:"At Leader Sushi, every dish is an invitation to travel. Our flavourful recipes are crafted in the purest tradition, with fresh, carefully selected produce, to let you explore the full richness of Asian cuisine.",
+    about_p2:"Our warm dining room welcomes groups, colleagues and families as well as the curious discovering Japanese food. Continuous service, birthdays, private room: everything is designed for a friendly moment.",
+    tag1:"🍣 Homemade", tag2:"🌱 Vegan options", tag3:"🌶️ Spicy dishes", tag4:"🎉 Private room", tag5:"🕛 Continuous service",
+    order_kicker:"ご注文 · Order", order_title:"At home or to go",
+    order_sub:"Enjoy Leader Sushi wherever you are — delivered, collected, or dine in.",
+    oc1_t:"Uber Eats Delivery", oc1_p:"Get the whole menu delivered straight to your door in minutes.", oc1_b:"Order now",
+    oc2_t:"Click &amp; Collect", oc2_p:"Order online and pick up your meal at the restaurant, no waiting.", oc2_b:"Order &amp; pick up",
+    oc3_t:"Dine in", oc3_p:"Book your table or enjoy our dining room, birthdays welcome.", oc3_b:"📅 Book a table",
+    menu_kicker:"お品書き · Our Menu", menu_title:"The Menu", menu_sub:"A selection of our specialities. Find the full menu on Uber Eats.",
+    menu_disclaimer:"Prices may vary by ordering channel. Full menu and availability on Uber Eats.",
+    cta_title:"Hungry?", cta_sub:"Order now and enjoy Leader Sushi cuisine.",
+    cta_uber:"🛵 Uber Eats", cta_cc:"🥡 Click &amp; Collect", cta_reserve:"📅 Book a table",
+    info_kicker:"ご案内 · Find us", info_title:"Hours &amp; Contact",
+    hours_title:"🕛 Opening hours", contact_title:"📍 Contact",
+    lbl_addr:"Address", lbl_phone:"Phone", lbl_social:"Social",
+    foot_about:"Homemade Japanese &amp; Asian cuisine in the heart of Paris. Sushi, ramen, poké &amp; maki.",
+    foot_nav:"Navigation", foot_order:"Order", foot_contact:"Contact",
+    foot_call:"Book · 01 45 08 16 32", foot_hours:"Every day · 11am–11pm", foot_rights:"All rights reserved.",
+    hours_value:"11:00 am – 11:00 pm"
+  }
+};
+
+let currentLang = 'fr';
+
+/* ============ CUISINE FILMSTRIP ============ */
+function renderFilmstrip(lang){
+  const track=document.getElementById('filmTrack');
+  if(!track)return;
+  track.innerHTML='';
+  // list rendered twice for a seamless infinite loop
+  DISHES.concat(DISHES).forEach(d=>{
+    const el=document.createElement('div');
+    el.className='film-item';
+    el.innerHTML='<img src="'+d.img+'" alt="'+d[lang]+'" loading="lazy" draggable="false">'+
+      '<div class="film-cap">'+d[lang]+(d.sub?' <small>'+d.sub+'</small>':'')+'</div>';
+    track.appendChild(el);
+  });
+}
+let filmReady=false;
+function setupFilmstrip(){
+  const strip=document.getElementById('filmstrip');
+  if(!strip||filmReady)return;
+  filmReady=true;
+  let dragging=false,startX=0,startScroll=0,hover=false;
+  const half=()=>strip.scrollWidth/2;
+  strip.addEventListener('mouseenter',()=>hover=true);
+  strip.addEventListener('mouseleave',()=>{hover=false;dragging=false;strip.classList.remove('dragging');});
+  // continuous auto-scroll
+  setInterval(()=>{
+    if(dragging||strip.scrollWidth<2)return;
+    strip.scrollLeft+=0.5;
+    if(strip.scrollLeft>=half())strip.scrollLeft-=half();
+  },16);
+  // seamless wrap on manual scroll/swipe
+  strip.addEventListener('scroll',()=>{
+    if(dragging)return;
+    if(strip.scrollLeft<=0)strip.scrollLeft+=half();
+    else if(strip.scrollLeft>=half())strip.scrollLeft-=half();
+  });
+  // mouse drag to scroll (touch uses native scroll)
+  strip.addEventListener('pointerdown',e=>{
+    if(e.pointerType!=='mouse')return;
+    dragging=true;startX=e.clientX;startScroll=strip.scrollLeft;
+    strip.classList.add('dragging');
+  });
+  strip.addEventListener('pointermove',e=>{
+    if(!dragging)return;
+    strip.scrollLeft=startScroll-(e.clientX-startX);
+  });
+  const endDrag=()=>{dragging=false;strip.classList.remove('dragging');};
+  strip.addEventListener('pointerup',endDrag);
+  strip.addEventListener('pointercancel',endDrag);
+}
+
+/* ============ RENDER MENU ============ */
+function renderMenu(lang){
+  const tabs = document.getElementById('menuTabs');
+  const body = document.getElementById('menuBody');
+  tabs.innerHTML=''; body.innerHTML='';
+  MENU.forEach((cat,i)=>{
+    const t=document.createElement('button');
+    t.textContent=cat[lang];
+    if(i===0)t.classList.add('active');
+    t.onclick=()=>{
+      document.querySelectorAll('.menu-tabs button').forEach(b=>b.classList.remove('active'));
+      t.classList.add('active');
+      document.querySelectorAll('.menu-cat').forEach(s=>s.style.display='none');
+      document.getElementById('cat-'+cat.id).style.display='';
+      const y=document.getElementById('menuTabs').getBoundingClientRect().top+window.scrollY-90;
+      window.scrollTo({top:y,behavior:'smooth'});
+    };
+    tabs.appendChild(t);
+
+    const sec=document.createElement('div');
+    sec.className='menu-cat';
+    sec.id='cat-'+cat.id;
+    sec.style.display = (i===0?'':'none');
+    let html='<div class="cat-head">'+
+      (cat.img?'<img class="cat-thumb" src="'+cat.img+'" alt="'+cat[lang]+'" loading="lazy">':'')+
+      '<h3><span class="ic">'+cat.icon+'</span>'+cat[lang]+'</h3></div>';
+    cat.subs.forEach(sub=>{
+      html+='<div class="menu-sub"><h4>'+sub[lang]+'</h4><div class="items">';
+      sub.items.forEach(it=>{
+        const nm=(lang==='en'&&it.ne)?it.ne:it.n;
+        const ds=(lang==='en'&&it.de)?it.de:it.d;
+        html+='<div class="item"><div class="nm">'+nm+
+          (ds?'<small>'+ds+'</small>':'')+'</div><div class="price">'+it.p+'</div></div>';
+      });
+      html+='</div></div>';
+    });
+    sec.innerHTML=html;
+    body.appendChild(sec);
+  });
+}
+
+/* ============ MENU TABS · scroll à la souris ============ */
+function setupMenuTabs(){
+  const el=document.getElementById('menuTabs'); if(!el)return;
+  let down=false,sx=0,sl=0,moved=false;
+  el.addEventListener('pointerdown',e=>{
+    if(e.pointerType!=='mouse')return;
+    down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;el.classList.add('dragging');
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!down)return;
+    const dx=e.clientX-sx; if(Math.abs(dx)>4)moved=true;
+    el.scrollLeft=sl-dx;
+  });
+  const up=()=>{down=false;el.classList.remove('dragging');};
+  el.addEventListener('pointerup',up);
+  el.addEventListener('pointerleave',up);
+  el.addEventListener('pointercancel',up);
+  // empêche d'activer un onglet après un glissé
+  el.addEventListener('click',e=>{ if(moved){e.preventDefault();e.stopPropagation();moved=false;} },true);
+  // molette verticale -> défilement horizontal
+  el.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ el.scrollLeft+=e.deltaY; e.preventDefault(); }
+  },{passive:false});
+}
+
+/* ============ RENDER HOURS ============ */
+function renderHours(lang){
+  const list=document.getElementById('hoursList');
+  const today=(new Date().getDay()+6)%7; // Mon=0
+  list.innerHTML='';
+  HOURS.forEach((d,i)=>{
+    const row=document.createElement('div');
+    row.className='hours-row'+(i===today?' today':'');
+    row.innerHTML='<span>'+d[lang]+'</span><span>'+I18N[lang].hours_value+'</span>';
+    list.appendChild(row);
+  });
+}
+
+/* ============ APPLY I18N ============ */
+function setLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    if(I18N[lang][key]!==undefined) el.innerHTML=I18N[lang][key];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+  renderFilmstrip(lang);
+  renderMenu(lang);
+  renderHours(lang);
+}
+
+/* ============ INIT ============ */
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.onclick=()=>setLang(b.dataset.lang);
+});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled', window.scrollY>40);
+});
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.onclick=()=>navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
+document.getElementById('year').textContent=new Date().getFullYear();
+
+renderTicker();
+setLang('fr');
+setupFilmstrip();
+setupMenuTabs();
+</script>
+</body>
+</html>
