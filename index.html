@@ -992,11 +992,17 @@ function setupFilmstrip(){
   const half=()=>strip.scrollWidth/2;
   strip.addEventListener('mouseenter',()=>hover=true);
   strip.addEventListener('mouseleave',()=>{hover=false;dragging=false;strip.classList.remove('dragging');});
-  // continuous auto-scroll
+  // continuous auto-scroll (pas entiers -> fonctionne aussi sur mobile)
+  let acc=0;
   setInterval(()=>{
     if(dragging||strip.scrollWidth<2)return;
-    strip.scrollLeft+=0.5;
-    if(strip.scrollLeft>=half())strip.scrollLeft-=half();
+    acc+=0.7;
+    if(acc>=1){
+      const step=Math.floor(acc); acc-=step;
+      strip.scrollLeft+=step;
+      const h=half();
+      if(h>0&&strip.scrollLeft>=h)strip.scrollLeft-=h;
+    }
   },16);
   // seamless wrap on manual scroll/swipe
   strip.addEventListener('scroll',()=>{
