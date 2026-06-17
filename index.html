@@ -148,6 +148,7 @@
   .sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
   .sec-head .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;color:var(--red);display:block;margin-bottom:14px;font-weight:500}
   .sec-head h2{font-size:clamp(2rem,4.5vw,2.9rem);margin-bottom:16px}
+  .sec-head h2 em,h2 em{font-style:italic;color:var(--gold)}
   .sec-head p{color:var(--muted);font-weight:300}
 
   /* ABOUT */
@@ -198,6 +199,48 @@
   .cuisine-foot{max-width:var(--maxw);margin:0 auto;padding:28px 22px 56px}
   .cuisine-foot span{color:#bcac8a;letter-spacing:.28em;text-transform:uppercase;font-size:.76rem}
   .cuisine-foot span::before{content:"\2192  ";color:var(--gold-soft)}
+
+  /* REVEAL au scroll */
+  .reveal{opacity:0;transform:translateY(26px);
+    transition:opacity .7s ease, transform .7s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* UNIVERS CULINAIRES */
+  .univers{background:var(--wave), linear-gradient(180deg,#1a2038,#161b30)}
+  .jp-sep{width:130px;height:1px;margin:24px auto 0;position:relative;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .jp-sep::before{content:"\25C6";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    color:var(--gold);font-size:.6rem;background:#181d34;padding:0 9px}
+  .univ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:8px}
+  .univ-card{position:relative;overflow:hidden;border-radius:16px;padding:30px 28px 34px;
+    background:linear-gradient(160deg,#2b3560,#1f274a);
+    border:1px solid rgba(216,168,56,.32);box-shadow:0 14px 38px rgba(0,0,0,.3);
+    transition:transform .55s cubic-bezier(.2,.6,.2,1),opacity .6s ease,box-shadow .45s,border-color .45s}
+  .univ-card.in:hover{transform:translateY(-10px)}
+  .univ-card:hover{border-color:var(--gold);box-shadow:0 28px 64px rgba(0,0,0,.5)}
+  .univ-card::after{content:"";position:absolute;top:0;left:-65%;width:55%;height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.14),transparent);
+    transform:skewX(-18deg);transition:left .65s ease;pointer-events:none}
+  .univ-card:hover::after{left:135%}
+  .u-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+  .u-ic{font-size:1.8rem;line-height:1;transition:transform .45s ease;filter:saturate(1.1)}
+  .univ-card:hover .u-ic{transform:scale(1.2) rotate(-6deg)}
+  .u-num{font-family:'Shippori Mincho',serif;font-size:1.9rem;font-weight:700;
+    color:rgba(236,200,116,.38);transition:color .45s}
+  .univ-card:hover .u-num{color:var(--gold-soft)}
+  .univ-card h3{font-size:1.28rem;margin-bottom:11px}
+  .univ-card h3::after{content:"";display:block;width:0;height:2px;background:var(--gold);
+    margin-top:11px;transition:width .45s ease}
+  .univ-card:hover h3::after{width:44px}
+  .univ-card p{color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.55}
+  .univ-more{display:flex;flex-direction:column;justify-content:center;text-decoration:none;
+    background:linear-gradient(160deg,#3c3018,#241a0b);border-color:rgba(216,168,56,.55)}
+  .univ-more h3{font-size:1.25rem;margin-bottom:18px;color:var(--cream)}
+  .univ-more .u-link{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;
+    font-size:.8rem;font-weight:600;transition:.3s}
+  .univ-more:hover .u-link{letter-spacing:.2em}
+  @media(max-width:1024px){.univ-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:540px){.univ-grid{grid-template-columns:1fr}}
 
   /* MENU */
   .menu{background:var(--wave), linear-gradient(180deg,#1d1512,#16100e)}
@@ -268,6 +311,39 @@
     border:1px solid var(--line);border-radius:50%;color:var(--gold);transition:.25s
   }
   .socials a:hover{background:var(--gold);color:#1a130a}
+
+  /* AVIS CLIENTS */
+  .reviews{background:var(--bg-2) var(--wave)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .review-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:32px 28px;
+    box-shadow:0 14px 36px rgba(0,0,0,.28);display:flex;flex-direction:column;gap:14px;transition:transform .4s,border-color .4s}
+  .review-card:hover{transform:translateY(-6px);border-color:var(--gold)}
+  .review-card .stars{color:var(--gold);letter-spacing:.18em;font-size:1rem}
+  .review-card p{color:#dad4e4;font-style:italic;font-weight:300;line-height:1.65;flex:1;margin:0}
+  .review-by{color:var(--muted);font-size:.86rem}
+  .review-by b{color:var(--cream);font-style:normal}
+  .reviews-cta{text-align:center;margin-top:42px}
+  @media(max-width:880px){.reviews-grid{grid-template-columns:1fr}}
+
+  /* VENIR NOUS DÉCOUVRIR */
+  .find-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:stretch}
+  .find-cards{display:flex;flex-direction:column;gap:16px}
+  .find-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 26px;
+    display:flex;align-items:flex-start;gap:18px}
+  .find-card .fc-ic{flex:0 0 auto;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.1rem}
+  .find-card .fc-body{flex:1}
+  .find-card b{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-weight:600}
+  .find-card .fc-val,.find-card .fc-val a{color:var(--cream);font-size:1.02rem;line-height:1.5}
+  .find-hrow{display:flex;justify-content:space-between;gap:18px;font-size:.92rem;padding:3px 0}
+  .find-hrow span:last-child{color:var(--gold-soft);white-space:nowrap}
+  .find-hrow.today{color:var(--gold);font-weight:600}
+  .find-actions{display:flex;flex-direction:column;gap:13px;margin-top:4px}
+  .find-actions .btn{justify-content:center;padding:15px 22px;font-size:.86rem}
+  .find-map{border-radius:18px;overflow:hidden;border:1px solid var(--line);min-height:520px;
+    box-shadow:0 18px 50px rgba(0,0,0,.45)}
+  .find-map iframe{width:100%;height:100%;min-height:520px;border:0;filter:grayscale(.15) contrast(1.05)}
+  @media(max-width:880px){.find-grid{grid-template-columns:1fr}.find-map{min-height:340px}.find-map iframe{min-height:340px}}
 
   /* CTA strip */
   .cta-strip{background:linear-gradient(120deg,#1c2440,#241b32);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
@@ -411,6 +487,19 @@
   </div>
 </section>
 
+<!-- ================= UNIVERS CULINAIRES ================= -->
+<section class="univers" id="univers">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="univ_kicker">料理 · Nos spécialités</span>
+      <h2 data-i18n="univ_title">Nos 7 Univers Culinaires</h2>
+      <p data-i18n="univ_sub">Un voyage gustatif au cœur de la cuisine japonaise.</p>
+      <div class="jp-sep"></div>
+    </div>
+    <div class="univ-grid" id="universGrid"></div>
+  </div>
+</section>
+
 <!-- ================= MENU ================= -->
 <section class="menu" id="menu">
   <div class="wrap">
@@ -457,41 +546,52 @@
   </div>
 </section>
 
-<!-- ================= INFO ================= -->
+<!-- ================= AVIS CLIENTS ================= -->
+<section class="reviews" id="avis">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="rev_kicker">お客様の声 · Avis clients</span>
+      <h2 data-i18n="rev_title">Ce que disent <em>nos clients</em></h2>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+    <div class="reviews-cta">
+      <a href="https://www.google.com/maps/search/?api=1&query=Leader%20Sushi%2078%20Rue%20Rambuteau%20Paris" target="_blank" rel="noopener" class="btn ghost" data-i18n="rev_btn">Laisser un avis Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VENIR NOUS DÉCOUVRIR ================= -->
 <section class="info" id="info">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker" data-i18n="info_kicker">Nous trouver</span>
-      <h2 data-i18n="info_title">Horaires &amp; Contact</h2>
+      <span class="kicker" data-i18n="info_kicker">ご案内 · Nous trouver</span>
+      <h2 data-i18n="find_title">Venir nous <em>découvrir</em></h2>
     </div>
-    <div class="info-grid">
-      <div class="info-card">
-        <h3 data-i18n="hours_title">🕛 Horaires d'ouverture</h3>
-        <div id="hoursList"></div>
+    <div class="find-grid">
+      <div class="find-cards">
+        <div class="find-card">
+          <span class="fc-ic">📍</span>
+          <div class="fc-body"><b data-i18n="lbl_addr">Adresse</b>
+            <div class="fc-val">78 Rue Rambuteau<br/>75001 Paris</div></div>
+        </div>
+        <div class="find-card">
+          <span class="fc-ic">📞</span>
+          <div class="fc-body"><b data-i18n="lbl_phone">Téléphone</b>
+            <div class="fc-val"><a href="tel:+33145081632">01 45 08 16 32</a></div></div>
+        </div>
+        <div class="find-card">
+          <span class="fc-ic">🕛</span>
+          <div class="fc-body"><b data-i18n="find_hours">Horaires</b>
+            <div id="hoursList"></div></div>
+        </div>
+        <div class="find-actions">
+          <a href="tel:+33145081632" class="btn" data-i18n="find_reserve">Réserver maintenant</a>
+          <a href="https://instagram.com/leadersushi" target="_blank" rel="noopener" class="btn ghost" data-i18n="find_contact">Nous contacter</a>
+        </div>
       </div>
-      <div class="info-card">
-        <h3 data-i18n="contact_title">📍 Coordonnées</h3>
-        <div class="contact-line">
-          <span class="ic">📍</span>
-          <div><b data-i18n="lbl_addr">Adresse</b>78 Rue Rambuteau, 75001 Paris</div>
-        </div>
-        <div class="contact-line">
-          <span class="ic">📞</span>
-          <div><b data-i18n="lbl_phone">Téléphone</b><a href="tel:+33145081632">01 45 08 16 32</a></div>
-        </div>
-        <div class="contact-line">
-          <span class="ic">💬</span>
-          <div><b data-i18n="lbl_social">Réseaux</b>
-            <div class="socials">
-              <a href="https://instagram.com/leadersushi" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
-              <a href="https://facebook.com/yang.leadersushi" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-            </div>
-          </div>
-        </div>
-        <div class="map-embed">
-          <iframe loading="lazy" title="Leader Sushi map"
-            src="https://www.google.com/maps?q=78+Rue+Rambuteau,+75001+Paris&output=embed"></iframe>
-        </div>
+      <div class="find-map">
+        <iframe loading="lazy" title="Leader Sushi map"
+          src="https://www.google.com/maps?q=78+Rue+Rambuteau,+75001+Paris&output=embed"></iframe>
       </div>
     </div>
   </div>
@@ -910,6 +1010,10 @@ const I18N = {
   fr:{
     nav_about:"La Maison", nav_order:"Commander", nav_gallery:"Galerie", nav_menu:"Carte", nav_info:"Infos", nav_cta:"Commander",
     cuis_kicker:"料理 · En cuisine — Nos plats", cuis_hint:"Glissez pour découvrir",
+    univ_kicker:"料理 · Nos spécialités", univ_title:"Nos 7 Univers Culinaires", univ_sub:"Un voyage gustatif au cœur de la cuisine japonaise.",
+    univ_more:"Et bien plus encore à découvrir sur place.", univ_more_b:"Découvrir la carte",
+    rev_kicker:"お客様の声 · Avis clients", rev_title:"Ce que disent <em>nos clients</em>", rev_btn:"Laisser un avis Google",
+    find_title:"Venir nous <em>découvrir</em>", find_reserve:"Réserver maintenant", find_contact:"Nous contacter", find_hours:"Horaires",
     hero_eyebrow:"Cuisine Passion · Paris 1er",
     hero_title:"Leader <em>Sushi</em>",
     hero_lead:"L'art du sushi, au cœur de Paris.",
@@ -939,6 +1043,10 @@ const I18N = {
   en:{
     nav_about:"Our Story", nav_order:"Order", nav_gallery:"Gallery", nav_menu:"Menu", nav_info:"Info", nav_cta:"Order now",
     cuis_kicker:"料理 · In the kitchen — Our dishes", cuis_hint:"Drag to explore",
+    univ_kicker:"料理 · Our specialities", univ_title:"Our 7 Culinary Worlds", univ_sub:"A flavourful journey through Japanese cuisine.",
+    univ_more:"And much more to discover on site.", univ_more_b:"See the full menu",
+    rev_kicker:"お客様の声 · Reviews", rev_title:"What <em>our guests</em> say", rev_btn:"Leave a Google review",
+    find_title:"Come <em>discover</em> us", find_reserve:"Book now", find_contact:"Contact us", find_hours:"Opening hours",
     hero_eyebrow:"Cuisine Passion · Paris 1st",
     hero_title:"Leader <em>Sushi</em>",
     hero_lead:"The art of sushi, in the heart of Paris.",
@@ -968,6 +1076,60 @@ const I18N = {
 };
 
 let currentLang = 'fr';
+
+/* ============ REVEAL au scroll ============ */
+const revealIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){
+    const d=+(e.target.dataset.rdelay||0);
+    setTimeout(()=>e.target.classList.add('in'), d);
+    revealIO.unobserve(e.target);
+  }});
+},{threshold:0.12});
+function reveal(el,delay){ el.classList.add('reveal'); if(delay) el.dataset.rdelay=delay; revealIO.observe(el); }
+
+/* ============ DATA: UNIVERS CULINAIRES ============ */
+const UNIVERS=[
+  {icon:'🍣', fr:{t:'Sushi & Sashimi', d:'Préparés à la minute par nos chefs, dans la plus pure tradition japonaise.'}, en:{t:'Sushi & Sashimi', d:'Made to order by our chefs, in the purest Japanese tradition.'}},
+  {icon:'🍙', fr:{t:'Makis & California', d:'Une large sélection de makis et california rolls, créatifs et savoureux.'}, en:{t:'Maki & California', d:'A wide selection of creative, flavourful maki and california rolls.'}},
+  {icon:'🍢', fr:{t:'Yakitori & Brochettes', d:'Brochettes et grillades japonaises laquées, servies bien chaudes.'}, en:{t:'Yakitori & Skewers', d:'Glazed Japanese skewers and grills, served piping hot.'}},
+  {icon:'🍜', fr:{t:'Ramen & Nouilles', d:'Bouillons tonkotsu et nouilles sautées, préparés minute selon vos envies.'}, en:{t:'Ramen & Noodles', d:'Tonkotsu broths and stir-fried noodles, made fresh to your taste.'}},
+  {icon:'🍤', fr:{t:'Tempura & Fritures', d:'Légumes, crevettes et calamars en beignets légers et croustillants.'}, en:{t:'Tempura & Fried', d:'Vegetables, shrimp and squid in light, crispy batter.'}},
+  {icon:'🥗', fr:{t:'Pokés & Chirashi', d:'Bols frais et colorés : saumon, thon, avocat, mangue et riz vinaigré.'}, en:{t:'Poké & Chirashi', d:'Fresh, colourful bowls: salmon, tuna, avocado, mango and sushi rice.'}},
+  {icon:'🍡', fr:{t:'Desserts & Mochi', d:'Mochis, perles de coco et douceurs maison pour finir en beauté.'}, en:{t:'Desserts & Mochi', d:'Mochi, coconut pearls and homemade treats for a sweet finish.'}},
+];
+function renderUnivers(lang){
+  const g=document.getElementById('universGrid'); if(!g)return;
+  g.innerHTML='';
+  UNIVERS.forEach((u,i)=>{
+    const c=document.createElement('div');
+    c.className='univ-card';
+    c.innerHTML='<div class="u-top"><span class="u-ic">'+u.icon+'</span><span class="u-num">0'+(i+1)+'</span></div>'+
+      '<h3>'+u[lang].t+'</h3><p>'+u[lang].d+'</p>';
+    g.appendChild(c); reveal(c, i*80);
+  });
+  const b=document.createElement('a');
+  b.className='univ-card univ-more'; b.href='#menu';
+  b.innerHTML='<h3>'+I18N[lang].univ_more+'</h3><span class="u-link">'+I18N[lang].univ_more_b+' →</span>';
+  g.appendChild(b); reveal(b, UNIVERS.length*80);
+}
+
+/* ============ DATA: AVIS CLIENTS ============ */
+const REVIEWS=[
+  {src:'Google', fr:"Un buffet incroyable. Le choix est immense, les plats sont frais et tout est délicieux. On y retourne en famille chaque mois.", en:"An incredible spread. Huge choice, fresh dishes and everything is delicious. We come back as a family every month.", by:'Marie L.'},
+  {src:'TripAdvisor', fr:"Excellent rapport qualité-prix. Sushis excellents, grillades de très bonne qualité. Service rapide même en heure de pointe.", en:"Excellent value for money. Great sushi, very good grills. Fast service even at peak times.", by:'Karim B.'},
+  {src:'Google', fr:"Une adresse incontournable du quartier. Cadre chaleureux, accueil adorable et cuisine japonaise authentique. On adore !", en:"A must in the neighbourhood. Warm setting, lovely welcome and authentic Japanese food. We love it!", by:'Sophie M.'},
+];
+function renderReviews(lang){
+  const g=document.getElementById('reviewsGrid'); if(!g)return;
+  g.innerHTML='';
+  REVIEWS.forEach((r,i)=>{
+    const c=document.createElement('div');
+    c.className='review-card';
+    c.innerHTML='<div class="stars">★★★★★</div><p>«&nbsp;'+r[lang]+'&nbsp;»</p>'+
+      '<div class="review-by"><b>'+r.by+'</b> — '+r.src+'</div>';
+    g.appendChild(c); reveal(c, i*90);
+  });
+}
 
 /* ============ CUISINE FILMSTRIP ============ */
 function renderFilmstrip(lang){
@@ -1098,7 +1260,7 @@ function renderHours(lang){
   list.innerHTML='';
   HOURS.forEach((d,i)=>{
     const row=document.createElement('div');
-    row.className='hours-row'+(i===today?' today':'');
+    row.className='find-hrow'+(i===today?' today':'');
     row.innerHTML='<span>'+d[lang]+'</span><span>'+I18N[lang].hours_value+'</span>';
     list.appendChild(row);
   });
@@ -1116,6 +1278,8 @@ function setLang(lang){
     b.classList.toggle('active', b.dataset.lang===lang);
   });
   renderFilmstrip(lang);
+  renderUnivers(lang);
+  renderReviews(lang);
   renderMenu(lang);
   renderHours(lang);
 }
